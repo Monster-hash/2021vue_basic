@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1.<div id="root">是一个容器，容器中写的不是原始html代码，而是Vue的模板代码。
+		2.所谓的模板代码，类似于React中的jsx，是html+js的混合体
+		3.{{xxx}},xxx会自动读取data中的xxx属性，xxxx当表达式去解析
+     -->
+    <!-- 准备容器 -->
+    <div id="root">
+        <h1>HELLO,{{demo.name}}</h1>
+        <h1>位置:{{demo.address}}</h1>
+        <h1>学科:{{demo.subject()}}</h1>
+        <hr/>
+        <h1>{{demo.name , demo.address}}</h1><!-- 最终展示的是name -->
+        <h1>{{demo.name && demo.address}}</h1><!-- 最终展示的是address-->
+        <h1>{{demo.name ? 1 : 2}}</h1><!-- 最终展示的是1-->
+
+        <hr/>
+
+
+    </div>
+    <script type="text/javascript">
+        //创建vue实例对象，并传入配置对象
+        new Vue({
+            el:'#root',//el用于指定当前vue实例对象为哪个容器服务，值是选择器字符串，选择器写法类似于jQuery
+            data:{//data是存储数据的地方，为root容器提供数据，值为一个对象，相当于React中的state
+                demo:{
+                    name:'monster-hash',
+                    address:'hongkong',
+                    subject:()=>'前端'
+
+                }
+                
+
+            }
+        })
+    </script>
+</body>
+</html>
